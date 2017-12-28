@@ -1,0 +1,5 @@
+name: CommonRest
+description: A restful client for Common library services
+
+dependencies:
+  http: '>=0.11.3+12'
