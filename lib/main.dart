@@ -13,7 +13,7 @@ void main() {
 
 fetchData() async {
   GreaterThan test = new GreaterThan("5");
-  String a = JSON.encode(test);
+  String a = json.encode(test);
 
   RestClient client = new RestClient();
   client.processMap({"userName":test});
