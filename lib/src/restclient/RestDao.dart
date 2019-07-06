@@ -4,7 +4,7 @@ import 'Dao.dart';
 import 'AbstractRestriction.dart';
 
 class RestClient implements Dao {
-  static const String _host = "10.0.2.2";
+  static const String _host = "localhost";
   static const String _scheme = "http";
   static const String _path = "/";
   static const int _port = 8080;
@@ -21,6 +21,16 @@ class RestClient implements Dao {
 
   findById(String className, num id) async {
     var url = "${className}/${id}";
+    Uri uri = new Uri(scheme: _scheme, host: _host, port: _port, path: _path + url);
+
+    var response = await http.get(uri.toString(), headers: {"Authorization": loginToken, "Content-Type" : "application/json"});
+    setLoginToken(response);
+    Map<String, dynamic> result = json.decode(response.body);
+    return result;
+  }
+
+  getDefault(String className) async {
+    var url = "${className}";
     Uri uri = new Uri(scheme: _scheme, host: _host, port: _port, path: _path + url);
 
     var response = await http.get(uri.toString(), headers: {"Authorization": loginToken, "Content-Type" : "application/json"});

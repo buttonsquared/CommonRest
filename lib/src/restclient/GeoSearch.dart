@@ -6,7 +6,7 @@ class GeoSearch extends AbstractRestriction {
   num radius;
 
   GeoSearch(this.latitude, this.longitude, this.radius) {
-    super.className = "com.nbcuni.commonlib.dao.GeoSearch";
+    super.className = "com.commonlib.dao.GeoSearch";
   }
 
   Map toJson() {
